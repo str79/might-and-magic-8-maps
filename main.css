@@ -1,0 +1,211 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+body{
+	overflow: hidden;
+	font-family: verdana;
+}
+.btall{
+	display: inline-block;
+	padding: .75rem 1.25rem;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+	cursor: pointer;
+}
+.dib{
+	display: inline-block;
+}
+.w50p{
+	width: 50%;
+}
+#flylist{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+body .hide{
+	display: none;
+}
+#mainpic{
+	cursor: grab;
+	position: relative;
+}
+#mainpic.active{
+	cursor: grabbing;
+}
+.mycircle{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	width: 20px;
+	height: 20px;
+	line-height: 24px;
+	line-height: 16px;
+	font-size: 10px;
+	background: #167CE1;
+	background: -moz-radial-gradient(center, #167CE1 0%, #0073E6 50%, #005CB6 100%);
+	background: -webkit-radial-gradient(center, #167CE1 0%, #0073E6 50%, #005CB6 100%);
+	background: radial-gradient(ellipse at center, #167CE1 0%, #0073E6 50%, #005CB6 100%);
+	position: absolute;
+	border: 1px solid #d72513;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	-webkit-box-shadow: inset 0px 0px 6px 1px #d72513; 
+	box-shadow: inset 0px 0px 6px 1px #d72513;
+	color: #fff;
+	cursor: move;
+}
+.mycircle.active{
+	cursor: grabbing;
+}
+.mycircle.highlight{
+	z-index: 10;
+}
+.list-group{
+	max-height: 800px;
+	overflow: auto;
+}
+.list-group-item{
+	cursor: pointer;
+	z-index: 2;
+}
+.helpp .list-group-item{
+	z-index: 3;
+}
+.list-group-item span{
+	vertical-align: middle;
+}
+.list-group-item-heading{
+	white-space: nowrap;
+}
+.list-group-item-text .icon,
+.list-group-item-heading .icon
+{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #000;
+	vertical-align: baseline;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.active .icon{
+	background: rgb(194,192,17);
+	background: radial-gradient(circle, rgba(194,192,17,1) 29%, rgba(1,112,152,0.75672275746236) 74%, rgba(0,39,255,0.437395026369923) 100%);
+}
+.icondel{
+	background: url('data:image/svg+xml;charset=UTF-8,<svg height="1000" width="875" xmlns="http://www.w3.org/2000/svg"><path d="M0 281.296l0 -68.355q1.953 -37.107 29.295 -62.496t64.449 -25.389l93.744 0l0 -31.248q0 -39.06 27.342 -66.402t66.402 -27.342l312.48 0q39.06 0 66.402 27.342t27.342 66.402l0 31.248l93.744 0q37.107 0 64.449 25.389t29.295 62.496l0 68.355q0 25.389 -18.553 43.943t-43.943 18.553l0 531.216q0 52.731 -36.13 88.862t-88.862 36.13l-499.968 0q-52.731 0 -88.862 -36.13t-36.13 -88.862l0 -531.216q-25.389 0 -43.943 -18.553t-18.553 -43.943zm62.496 0l749.952 0l0 -62.496q0 -13.671 -8.789 -22.46t-22.46 -8.789l-687.456 0q-13.671 0 -22.46 8.789t-8.789 22.46l0 62.496zm62.496 593.712q0 25.389 18.553 43.943t43.943 18.553l499.968 0q25.389 0 43.943 -18.553t18.553 -43.943l0 -531.216l-624.96 0l0 531.216zm62.496 -31.248l0 -406.224q0 -13.671 8.789 -22.46t22.46 -8.789l62.496 0q13.671 0 22.46 8.789t8.789 22.46l0 406.224q0 13.671 -8.789 22.46t-22.46 8.789l-62.496 0q-13.671 0 -22.46 -8.789t-8.789 -22.46zm31.248 0l62.496 0l0 -406.224l-62.496 0l0 406.224zm31.248 -718.704l374.976 0l0 -31.248q0 -13.671 -8.789 -22.46t-22.46 -8.789l-312.48 0q-13.671 0 -22.46 8.789t-8.789 22.46l0 31.248zm124.992 718.704l0 -406.224q0 -13.671 8.789 -22.46t22.46 -8.789l62.496 0q13.671 0 22.46 8.789t8.789 22.46l0 406.224q0 13.671 -8.789 22.46t-22.46 8.789l-62.496 0q-13.671 0 -22.46 -8.789t-8.789 -22.46zm31.248 0l62.496 0l0 -406.224l-62.496 0l0 406.224zm156.24 0l0 -406.224q0 -13.671 8.789 -22.46t22.46 -8.789l62.496 0q13.671 0 22.46 8.789t8.789 22.46l0 406.224q0 13.671 -8.789 22.46t-22.46 8.789l-62.496 0q-13.671 0 -22.46 -8.789t-8.789 -22.46zm31.248 0l62.496 0l0 -406.224l-62.496 0l0 406.224z"/></svg>') no-repeat 50% 50%;
+	background-size: 100%;
+	display: inline-block;
+	width: 14px;
+	height: 24px;
+	vertical-align: bottom;
+	cursor: pointer;
+}
+.helpp {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+.helpp > div > h2{
+	float: right;
+	cursor: pointer;
+}
+.autohist .hide {
+	/*display: block;*/
+}
+.objcirclept{
+	display: none;
+}
+.objcirclept.active{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border: 2px dashed black;
+	/*border-radius:50%;*/
+	position: absolute;
+	margin: 10px;
+}
+.objcirclept .ptDescr{
+	display: inline-block;
+	color: #fff;
+	background: darkgreen;
+	border: 1px solid #000;
+	position: relative;
+	left: 100%;
+	padding: 5px;
+}
+#flyProf {
+	position: absolute;
+	right: 0;
+	top: 2em;
+	z-index: 1;
+}
+.gmove{
+	display: none;
+}
+.gmove.active{
+	display: inline-block;color: green;padding: 7px 7px 0;font-size: 20px;
+}
+.gsize{
+	display: none;
+}
+.gsize.active{
+	display: inline-block;color: green;padding: 7px 7px 0;font-size: 20px;
+}
+/*goup styling*/
+.cg1 {
+	background: #B69100;
+	background: -moz-radial-gradient(center, #E1DE16 0%, #E6B700 50%, #B69100 100%);
+	background: -webkit-radial-gradient(center, #E1DE16 0%, #E6B700 50%, #B69100 100%);
+	background: radial-gradient(ellipse at center, #E1DE16 0%, #E6B700 50%, #B69100 100%);
+	border: 1px solid #5013d7;
+	-webkit-box-shadow: inset 0px 0px 6px 1px #5013d7;
+	box-shadow: inset 0px 0px 6px 1px #5013d7;
+	color: #000;
+}			
+.cg2 {
+	background: #6EB560;
+	background: -moz-radial-gradient(center, #5B6641 0%, #89A639 50%, #6EB560 100%);
+	background: -webkit-radial-gradient(center, #5B6641 0%, #89A639 50%, #6EB560 100%);
+	background: radial-gradient(ellipse at center, #5B6641 0%, #89A639 50%, #6EB560 100%);
+	border: 1px solid #9b6044;
+	-webkit-box-shadow: inset 0px 0px 6px 1px #0b4d06;
+	box-shadow: inset 0px 0px 6px 1px #0b4d06;
+	color: #fff;
+}
+.cg3 {
+	background: #B69100;
+	background: -moz-radial-gradient(center, #E1DE16 0%, #E6B700 50%, #B69100 100%);
+	background: -webkit-radial-gradient(center, #E1DE16 0%, #E6B700 50%, #B69100 100%);
+	background: radial-gradient(ellipse at center, #555252 0%, #807A7A 50%, #0D0D0D 100%);
+	border: 1px solid #1b1a1e;
+	-webkit-box-shadow: inset 0px 0px 6px 1px #5013d7;
+	box-shadow: inset 0px 0px 6px 1px #71706C;
+	color: #000;
+}
+.searchbtn {
+	display: inline;
+	background: #979994b3;
+	border: 1px solid white;
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+#flycMenu {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	z-index: 1;
+}
+#flycMenu .list-group-item-text:hover{
+	background: #c8c8c8;
+	padding:0 10px;
+}

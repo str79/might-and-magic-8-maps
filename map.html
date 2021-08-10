@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Might and Magic 8 maps</title>
+		<script
+		src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="main.js"></script>
+		<script src="settings.js"></script>
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<div class="helpp">
+			<div class="container">
+				<h2>Справка</h2>
+				<div class="list-group hide">
+					<div href="#" class="list-group-item">
+						<p class="list-group-item-text">
+							v=1.26<br>
+							<br>
+							Есть карта и слева группы, карту можно перемещать<br>
+							при клике на названии группы, список этой группы раскрывается<br>
+							клик по глазку на элементе списка показывает/скрывает его на карте, а также активирует/деактивирует сам глазок<br>
+							клик по глазку на названии группы активирует/деактивирует сам глазок, подэлементы, а также показывает/скрывает их на карте<br>
+							двойной щелчок по элементу - центрирует его на карте<br>
+							двойной щелчок по любому месту на карте выводит его координаты в консоль и копирует их в буффер обмена (служебное)<br>
+							<br>
+							Новая группа "История":<br>
+							Добавляются в неё те элементы которые были деактивированы по глазку на элементе(не на группе) или двойным кликом по кнопке на карте.<br>
+							Новые элементы обладают теми же функциями что и обычные, но в довесок при активации/деактивации элемента он не только переключает маркеры на карте и глазок в группе и истории,<br>
+							<br>
+							Также элементы истории можно удалять, переключая глазок, а также кликнуть по заголовку история с нажатым alt - история очищается.<br>
+							<br>
+							При наведении курсора мыши на название элемента, на карте он становится на передний план.<br>
+							При наведении курсора мыши на маркер на карте, он становится на передний план.<br>
+							<br>
+							Также есть кнопка включить всё - включает все элементы которые видит и маркеры тоже.<br>
+							<br>
+							По двойному клику по надписи "группы" копируется массив истории чтобы можно было заменить им уже имеющийся<br>
+							т.к. в истории хранятся только порядковые номера (id) маркеров на карте информация берется из маркеров на карте, номера групп берутся из списков которые соответстуют id на карте.<br>
+							Если нажать alt при двойном клике по надписи "группы", в буффер обмена копируются текущие элементы групп, но только активные, чтобы заменить текущий массив (для отслеживания прогресса),<br>
+							в частности тоже берет ид маркеров за основу для сбора информации, т.к. там нет номеров и прочего<br>
+							<br>
+							Маркеры на карте тоже можно передвигать также как и карту, а с зажатой клавишей shift - можно редактировать описание которое будет отображаться при копировании истории.<br>
+							Маркеры на карте можно выключать двойным кликом по ним, при этом срабатывает триггер как если бы выключал бы индивидуально глазок.<br>
+							Маркеры на карте можно передвигать с зажатым alt - тогда создается копия метки<br>
+							<br>
+							История сохраняется в куки, также на всякий случай сохраняется в localStorage<br>
+							При клике с ctrl по карте, появляется круг, отключается таким же способом, круг можно перемещать и увеличивать кнопками [], смысл в том, что при наведении на определенную группу маркеров,<br>
+							появлялся список того что находится в круге с номером и описанием.<br>
+							<br>
+							Если кликнуть по заголовку история с нажатым alt - история очищается, необходимо перезагрузить страницу.
+							<br>
+							В данной версии появилась возможность переключать карты.
+							В данной версии появилась возможность определять индекс с которого начинается отсчет номеров (чтобы история была непрерывная), пока только вручную.
+							Поворот колеса с alt и ctrl меняет масштаб.
+							Также добавлен режим отмены перетаскивания если нажат ctrl и shift.
+							
+							Добавлен режим массового перетаскивания меток по g и изменения размера по z, с зажаты shift - пропорциональное изменение расстояний между метками (как если бы решили изменить масштаб 
+							карты и надо бы метки привести в соответствие), без шифта ширина и длина растягиваются по разному, перемещены в контекстное меню меток, при нажатии zg больше не используются.
+							<br>
+							Порядок работы примерно следующий: нажимаем кнопку включить всё, по мере прохождения игры отключаем собранные точки индивидуально, а в истории запоминается наш путь.
+							Если карта новая, её создаем вручную и хотя бы 1 метку, далее эту метку можно передвигать, переименовывать и размножать с нажатым alt.
+							В конце даблклик по названию "группы", метки скопируются в б/о и в консоль (на всякий случай). Переименовываем для нужной карты.
+							<br>
+							При клике правой кнопкой мыши на меню, появляется альтернативное контекстное меню, если включить опцию перемещение клавишами, метка будет перемещаться клавишами стрелками
+							(на основе скан кодов клавиатуры).
+						</p>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div id="flycMenu" class="hide">
+			<div href="#" class="list-group-item"> 
+				<h4 class="list-group-item-heading">Режимы</h4> 
+				<p class="list-group-item-text" data-action="keymove">
+					<span class="icon"></span>
+					Перемещение кнопками клавиатуры
+				</p>
+				<p class="list-group-item-text" data-action="gmove">
+					<span class="icon"></span>
+					Глобальное перемещение
+				</p>
+				<p class="list-group-item-text" data-action="gsize">
+					<span class="icon"></span>
+					Глобальный размер
+				</p>
+			</div>		
+		</div>		
+		<div id="flyProf">
+			<div class="container">
+				<h2 class="dib">Карты</h2>
+				<div class="searchbtn dib">?</div>
+				<div class="searchdlg list-group hide">
+					<div href="#" class="list-group-item custom">
+						<h4 class="list-group-item-heading"><input type="text" placeholder="Что ищем" class="text"></h4>
+					</div>
+				</div>
+				<div class="list-group mainfly">
+					<div href="#" class="list-group-item">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;Общая группа</span></h4>
+					</div>
+					<div href="#" class="list-group-item autohist">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;История</span></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="mainpic" class="dib">
+			<img src="" alt="">
+		</div>
+		<div id="flylist">
+			<div class="container">
+				<h2>Группы</h2>
+				<div class="list-group maingroups">
+					<div class="btall">Включить всё</div>
+					<div href="#" class="list-group-item">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;Общая группа</span></h4>
+					</div>
+					<div href="#" class="list-group-item autohist">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;История</span></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- образец для элемента текста -->
+		<div id="tmpGroup" class="hide">
+			<div href="#" class="list-group-item">
+				<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;#text#</span></h4>
+			</div>
+		</div>
+		<div id="tmplist" class="hide">
+			<p class="list-group-item-text">
+				<span class="icon"></span>
+				#text#
+			</p>
+		</div>
+		<div id="tmpbtn" class="hide">
+			<div class="mycircle">
+				#number#
+			</div>
+		</div>
+		<div class="objcirclept">
+			<div class="ptDescr">
+			</div>
+		</div>
+	</body>
+</html>	
