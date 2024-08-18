@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Might and Magic 8 maps</title>
+		<!--jquery-->
+		<script
+		src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous"></script>
+		<!--bootstrap css-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<!--main js-->
+		<script src="main.js"></script>
+		<!--main css-->
+		<link rel="stylesheet" href="main.css">
+		<!--route mapping is used-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.7/leader-line.min.js"></script>
+	</head>
+	<body>
+		<div class="gameName hidden">mm8</div>
+		<div class="helpp">
+			<div class="container">
+				<div class="langSelect">
+					<h2 class="langCh unselectable" >LANG</h2>
+					<div class="boxsel list-group hide">
+						<div class="list-group-item">
+							<span class="icon"></span>
+							RU
+						</div>
+						<div class="list-group-item">
+							<span class="icon"></span>
+							EN
+						</div>
+					</div>
+				</div>
+				<h2 class="langCh unselectable">HELP</h2>
+				<div class="list-group hide">
+					<div href="#" class="list-group-item">
+						<p class="list-group-item-text">
+							v=2.015c<br>
+							<span class="langCh">
+								HELP_TEXT
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div id="flycMenu" class="hide">
+			<div href="#" class="list-group-item"> 
+				<h4 class="langCh list-group-item-heading">ACTIONS</h4> 
+				<p class="langCh list-group-item-text" data-action="keymove">
+					<span class="icon"></span>
+					ACT_KEYMOVE
+				</p>
+				<p class="langCh list-group-item-text" data-action="gmove">
+					<span class="icon"></span>
+					ACT_GLOBALMOVE
+				</p>
+				<p class="langCh list-group-item-text" data-action="gsize">
+					<span class="icon"></span>
+					ACT_GLOBALSIZE
+				</p>
+				<p class="langCh list-group-item-text" data-action="invIndex">
+					<span class="icon"></span>
+					ACT_YONGUP
+				</p>
+				<p class="langCh list-group-item-text" data-action="routeShow">
+					<span class="icon"></span>
+					ACT_BUILDROUTE
+				</p>
+				<p class="langCh list-group-item-text" data-action="drawLines">
+					<span class="icon"></span>
+					ACT_TEMPGLINES
+				</p>
+			</div>		
+		</div>		
+		<div id="flyaoMenu" class="hide">
+			<div href="#" class="list-group-item"> 
+				<h4 class="langCh list-group-item-heading">FASTACT</h4> 
+				<p class="langCh list-group-item-text savemap">
+					FASTACT_SAVEMAP
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text newprof">
+					FASTACT_NEWEMAP
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text newgroup">
+					FASTACT_NEWGROUP
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text newpoint">
+					FASTACT_NEWPOINT
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text compress">
+					FASTACT_COMPRESS
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text ignordel">
+					FASTACT_IGNORDEL
+					<span class="runicon"></span>
+				</p>
+			</div>		
+		</div>		
+		<div id="flyProf">
+			<div class="container">
+				<h2 class="dib langCh unselectable">MAPS</h2>
+				<div class="searchbtn dib">&#128270;</div>
+				<div class="menuaction dib">&#x1F7C8;</div>
+				<div class="oneaction dib">&#9889;</div>
+				<div class="searchdlg list-group hide">
+					<div href="#" class="list-group-item custom">
+						<h4 class="list-group-item-heading"><input type="text" placeholder="Что ищем" class="searchInput text"></h4>
+					</div>
+				</div>
+				<div class="list-group mainfly">
+					<div href="#" class="list-group-item">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;Общая группа</span></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="mainpic" class="dib">
+			<img src="" alt="">
+		</div>
+		<div id="flylist" class="unselectable">
+			<div class="container">
+				<!-- Группы, те что слева -->
+				<h2 class="langCh">GROUPS</h2>				
+				<div class="list-group maingroups">
+					<div class="btall">
+						<span class="allon langCh">GROUPS_ALLON</span> /
+						<span class="alloff langCh">GROUPS_ALLOFF</span>
+					</div>
+					<div href="#" class="list-group-item">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text langCh">&nbsp;GROUPS_COMMON</span></h4>
+					</div>
+					<div href="#" class="list-group-item autohist">
+						<h4 class="list-group-item-heading"><span class="icon"></span><span class="text langCh">&nbsp;GROUPS_HISTORY</span></h4>						
+					</div>
+				</div>
+				<!-- Полотно для инструментов рисования -->
+				<div class="drawingTools">
+					<!-- Первая группа - линии -->
+					<div href="#" class="list-group-item">
+						<div class="groupWpap2cl">
+							<div class="tmpLine drawItem">
+								<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g filter="url(#filter0_d_1_7)">
+										<line x1="23.3536" y1="3.35355" x2="4.35355" y2="22.3536" stroke="black" stroke-dasharray="2 2"></line>
+									</g>
+									<defs>
+										<filter id="filter0_d_1_7" x="0" y="0" width="27.7071" height="27.7071" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+											<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+											<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+											<feOffset dy="1"></feOffset>
+											<feGaussianBlur stdDeviation="2"></feGaussianBlur>
+											<feComposite in2="hardAlpha" operator="out"></feComposite>
+											<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+											<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_7"></feBlend>
+											<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_7" result="shape"></feBlend>
+										</filter>
+									</defs>
+								</svg>
+								
+							</div>
+							<div class="permanentLine drawItem">
+								<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g filter="url(#filter0_d_1_6)">
+										<line x1="0.646447" y1="18.6464" x2="18.6464" y2="0.646446" stroke="black"></line>
+									</g>
+									<defs>
+										<filter id="filter0_d_1_6" x="0.292908" y="0.292908" width="18.7071" height="19.7071" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+											<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+											<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+											<feOffset dy="1"></feOffset>
+											<feComposite in2="hardAlpha" operator="out"></feComposite>
+											<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+											<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_6"></feBlend>
+											<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_6" result="shape"></feBlend>
+										</filter>
+									</defs>
+								</svg>
+								
+							</div>
+						</div>
+					</div>
+					<!-- Настройка цвета -->
+					<div href="#" class="list-group-item">
+						<div class="setColors">
+							<div class="first">
+								<div data-color="#000" class="mark"></div>
+							</div>
+							<div class="back">
+								<div data-color="#fff" class="mark"></div>	
+							</div>
+							<input class="hidden" type="color" name="setcolors">
+						</div>
+					</div>
+				</div>
+				<!-- Полотно для настроек инструментов рисования -->
+				<div class="drawingToolsSetup">
+					<div class="drawSetItem list-group-item">
+						<svg width="36" height="14" viewBox="0 0 36 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 7L6 1L9.5 10.5L16.5 2.5L19.5 12.5L27.5 1L32.5 10.5L35.5 1" stroke="black"/>
+						</svg>
+						<div data-key="path" class="setOptions">
+							<div data-value="straight" class="option list-group-item">
+								<svg width="30" height="2" viewBox="0 0 30 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 1H30" stroke="black"/>
+								</svg>								
+							</div>
+							<div data-value="arc" class="option list-group-item">
+								<svg width="32" height="11" viewBox="0 0 32 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.5 10C0.5 10 11 0.5 17 0.5C23 0.5 31 10 31 10" stroke="black"/>
+								</svg>
+								
+							</div>
+							<div data-value="fluid" class="option list-group-item">
+								<svg width="34" height="13" viewBox="0 0 34 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 1.135C1 1.135 16 -0.365 19 6.635C22 13.635 33 12.135 33 12.135" stroke="black"/>
+								</svg>
+								
+							</div>
+							<div data-value="magnet" class="option list-group-item">
+								<svg width="33" height="10" viewBox="0 0 33 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 9.5C0 9.5 3.5 9.5 11 9.5C18.5 9.5 32.5 0.5 32.5 0.5" stroke="black"/>
+								</svg>
+								
+							</div>
+							<div data-value="grid" class="option list-group-item">
+								<svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1 1L16.0633 1.53333V17L35 16.4667" stroke="black"/>
+								</svg>								
+							</div>
+						</div>
+					</div>
+					<div class="drawSetItem list-group-item">
+						<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M26.9993 0.961569C26.978 0.409692 26.5134 -0.0204855 25.9616 0.000740519L16.9682 0.346639C16.4163 0.367865 15.9862 0.832456 16.0074 1.38433C16.0286 1.93621 16.4932 2.36639 17.0451 2.34516L25.0392 2.0377L25.3466 10.0318C25.3679 10.5837 25.8325 11.0138 26.3843 10.9926C26.9362 10.9714 27.3664 10.5068 27.3452 9.95492L26.9993 0.961569ZM1.73376 28.6794L26.7338 1.67941L25.2662 0.320594L0.266239 27.3206L1.73376 28.6794Z" fill="black"/>
+						</svg>
+						<div data-key="endPlug" class="setOptions">
+							<div data-value="disc" class="option list-group-item">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+								</svg>
+							</div>
+							<div data-value="square" class="option list-group-item">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect width="24" height="24" fill="#D9D9D9"/>
+								</svg>
+							</div>
+							<div data-value="arrow1" class="option list-group-item">
+								<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M11 5.5L28.5 1.5C26.9379 7.55313 25.5621 12.9469 24 19L21.5 8.5C16.8137 7.91421 15.6863 6.08579 11 5.5Z" fill="#171717"/>
+									<path d="M0.5 29.5L11 19L21.5 8.5M28.5 1.5L11 5.5C15.6863 6.08579 16.8137 7.91421 21.5 8.5M28.5 1.5C26.3521 3.64788 23.6479 6.35212 21.5 8.5M28.5 1.5C26.9379 7.55313 25.5621 12.9469 24 19L21.5 8.5" stroke="#171717"/>
+								</svg>
+							</div>
+							<div data-value="arrow2" class="option list-group-item">
+								<svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M24.9981 0.938892C24.9644 0.387639 24.4901 -0.0318796 23.9389 0.0018706L14.9557 0.551861C14.4045 0.585611 13.9849 1.05985 14.0187 1.6111C14.0524 2.16235 14.5267 2.58187 15.0779 2.54812L23.063 2.05924L23.5519 10.0443C23.5856 10.5955 24.0598 11.0151 24.6111 10.9813C25.1624 10.9476 25.5819 10.4733 25.5481 9.92207L24.9981 0.938892ZM1.749 27.6626L24.749 1.66258L23.251 0.337428L0.251003 26.3374L1.749 27.6626Z" fill="black"/>
+								</svg>								
+							</div>
+							<div data-value="arrow3" class="option list-group-item">
+								<svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10 2.5L30 1L28.5 18.5L20 11C12.5 5 10 2.5 10 2.5Z" fill="#171717"/>
+									<path d="M1 31.5L12.5 18.5L20 11M30 1L10 2.5C10 2.5 12.5 5 20 11M30 1C27.8521 3.14788 22.1479 8.85212 20 11M30 1C28.5 18.5 28.5 18.5 28.5 18.5L20 11" stroke="#171717"/>
+								</svg>
+								
+							</div>
+							<div data-value="hand" class="option list-group-item">
+								<svg width="39" height="31" viewBox="0 0 39 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M28 30.5H10L1.5 16.5L5 7.5L8 16.5V0.5H12V16.5H16V7.5H20.5V16.5H24.5V7.5H29.5V15L37.5 7.5L35 16.5L28 23V30.5Z" fill="#FCF8F8" stroke="#171717"/>
+								</svg>							
+							</div>
+							<div data-value="crosshair" class="option list-group-item">
+								<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M34.5 18.5C34.5 27.046 27.3512 34 18.5 34C9.64883 34 2.5 27.046 2.5 18.5C2.5 9.95398 9.64883 3 18.5 3C27.3512 3 34.5 9.95398 34.5 18.5Z" stroke="black"/>
+									<path d="M28.5 19C28.5 25.0963 23.7783 30 18 30C12.2217 30 7.5 25.0963 7.5 19C7.5 12.9037 12.2217 8 18 8C23.7783 8 28.5 12.9037 28.5 19Z" stroke="black"/>
+									<path d="M24.5 18.5C24.5 21.5006 21.8521 24 18.5 24C15.1479 24 12.5 21.5006 12.5 18.5C12.5 15.4994 15.1479 13 18.5 13C21.8521 13 24.5 15.4994 24.5 18.5Z" stroke="black"/>
+									<path d="M18.5 18.5H38M18.5 18.5V37.5M18.5 18.5H0M18.5 18.5V0" stroke="#171717"/>
+								</svg>
+							</div>
+							<div data-value="behind" class="option list-group-item">
+								<svg width="31" height="1" viewBox="0 0 31 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.5 0.5H30.5" stroke="#171717"/>
+								</svg>
+							</div>
+						</div>
+					</div>
+					<div data-key="middleLabel" class="drawSetItem list-group-item">
+						<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<line x1="3" y1="3.5" x2="37" y2="3.5" stroke="black"/>
+							<line x1="18.5" y1="35" x2="18.5" y2="4" stroke="black"/>
+							<line x1="11" y1="35.5" x2="27" y2="35.5" stroke="black"/>
+							<line x1="3.5" y1="10" x2="3.5" y2="4" stroke="black"/>
+							<line x1="36.5" y1="9" x2="36.5" y2="3" stroke="black"/>
+						</svg>							
+						<div class="setOptions">
+							<div data-value="input" class="option list-group-item flexGroup nohover">
+								<input autocomplete="off" type="text" name="lineText">
+								<div class="colorBox">
+									<div data-color="#fff" class="mark labelColor" ></div>	
+								</div>
+								<input class="hidden setcolors" type="color" name="setcolorsMlabel">
+							</div>
+						</div>
+					</div>
+					<div data-key="gradient" class="drawSetItem list-group-item grad">
+						<input autocomplete="off" type="checkbox" name="cGradient"><span class="glabel">Gradient</span>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- образец для элемента текста группы -->
+		<div id="tmpHistname" class="langCh hide">
+			HISTNAME
+		</div>
+		<div id="tmpGroup" class="hide">
+			<div href="#" class="list-group-item">
+				<h4 class="list-group-item-heading"><span class="icon"></span><span class="text">&nbsp;#text#</span></h4>
+			</div>
+		</div>
+		<div id="tmpContGroupMenu" class="hide">
+			<div href="#" class="list-group-item"> 
+				<h4 class="langCh list-group-item-heading">GROUPCMENU</h4> 
+				<p class="langCh list-group-item-text groupmove">
+					GROUPCMENU_MOVE
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text groupremove">
+					GROUPCMENU_REMOVE
+					<span class="runicon"></span>
+				</p>
+			</div>		
+		</div>
+		<div id="tmpContMenu" class="hide">
+			<div href="#" class="list-group-item"> 
+				<h4 class="langCh list-group-item-heading">CONTMENU</h4> 
+				<p class="langCh list-group-item-text chgroup">
+					CONTMENU_CHGROUP
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text delpoint">
+					CONTMENU_DELPOINT
+					<span class="runicon"></span>
+				</p>
+				<p class="langCh list-group-item-text toIgnore">
+					CONTMENU_ADDIGNORE
+					<span class="runicon"></span>
+				</p>			</div>		
+		</div>
+		<div id="tmplist" class="hide">
+			<p class="list-group-item-text">
+				<span class="icon"></span>
+				#text#
+			</p>
+		</div>
+		<div id="tmpbtn" class="hide">
+			<div class="mycircle">
+				#number#
+			</div>
+		</div>
+		<div class="objcirclept">
+			<div class="ptDescr">
+			</div>
+		</div>
+		<div class="selectpt">
+		</div>
+	</body>
+</html>
